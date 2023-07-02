@@ -1,9 +1,15 @@
+const { Client, Interaction } = require('discord.js');
 const { devs, testServer } = require('../../../config.json');
 const getLocalCommands = require('../../utils/getLocalCommands');
-
+const Level = require('../../models/Level');
+/**
+ * 
+ * @param {Client} client 
+ * @param {Interaction} interaction 
+ */
 
 module.exports = async (client, interaction) => {
-    if(!interaction.isChatInputCommand()) return;
+    if(interaction.isChatInputCommand()){
 
     const localCommands = getLocalCommands();
 
@@ -66,5 +72,6 @@ module.exports = async (client, interaction) => {
     } catch (error) {
         console.log(`There was error running this command: ${error}`);
     }
+} 
 
 };
