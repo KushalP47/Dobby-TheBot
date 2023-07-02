@@ -15,23 +15,23 @@ module.exports = (client) => {
 
         // setting up the buttons
         const statement1 = new ButtonBuilder()
-                .setCustomId('magic-encyclopedia')
-                .setLabel('Magical Encyclopedia')
+                .setCustomId('1124907690959839314')
+                .setLabel('magic-encyclopedia')
                 .setStyle(ButtonStyle.Secondary);
 
             const statement2 = new ButtonBuilder()
-                .setCustomId('quidditch-sports')
-                .setLabel('Quidditch Sports Event')
+                .setCustomId('1124908256490438766')
+                .setLabel('quidditch-sports')
                 .setStyle(ButtonStyle.Primary);
 
             const statement3 = new ButtonBuilder()
-                .setCustomId('travel-agency')
-                .setLabel('Travel Agency')
+                .setCustomId('1124908585189658724')
+                .setLabel('travel-agency')
                 .setStyle(ButtonStyle.Success);
 
             const statement4 = new ButtonBuilder()
-                .setCustomId('hogwarts-portal')
-                .setLabel('Hogwarts School Portal')
+                .setCustomId('1124909005769289822')
+                .setLabel('hogwarts-portal')
                 .setStyle(ButtonStyle.Danger);
 
             const row1 = new ActionRowBuilder()

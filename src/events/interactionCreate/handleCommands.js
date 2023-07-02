@@ -1,7 +1,6 @@
 const { Client, Interaction } = require('discord.js');
 const { devs, testServer } = require('../../../config.json');
 const getLocalCommands = require('../../utils/getLocalCommands');
-const Level = require('../../models/Level');
 /**
  * 
  * @param {Client} client 
@@ -72,6 +71,20 @@ module.exports = async (client, interaction) => {
     } catch (error) {
         console.log(`There was error running this command: ${error}`);
     }
-} 
+} else if(interaction.isButton()){
+
+    try {
+        // checking if the reaction is on the welcome message
+        if(interaction.channelId === process.env.REGISTRATION_CHANNEL_ID && interaction.message.author.bot){
+
+            await roleAssignment.callback(client, interaction);
+        }
+
+        return;
+    } catch (error) {
+        console.log(error);
+    }
+    
+}
 
 };

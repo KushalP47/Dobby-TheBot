@@ -73,5 +73,9 @@ module.exports = {
 
     name: 'level',
     description: "Shows XP your level.",
+    devOnly: false,
+    testOnly: false,
+    // options: [{}],
+    deleted: false,
 
 };
