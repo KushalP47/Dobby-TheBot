@@ -1,4 +1,4 @@
-const { Client, Interaction } = require('discord.js');
+const { Client, Interaction, PermissionFlagsBits } = require('discord.js');
 const Level = require('../../models/Level');
 
 module.exports = {
@@ -13,6 +13,7 @@ module.exports = {
     testOnly: false,
     // options: [{}],
     deleted: false,
+    botPermissions: [PermissionFlagsBits.ManageRoles],
 
     callback: async (client, interaction) => {
 
@@ -39,8 +40,13 @@ module.exports = {
                 role: "member",
             }
             const level = await Level.findOne(query);
+            console.log(interaction.member.moderatable);
+            role.editable = true;
+            console.log(role.editable);
             if(level){
+                
                 await interaction.member.roles.add(role);
+                console.log(interaction.member.roles);
                 level.role = role.name; // changing the role in database
 
                 // saving the changes in database

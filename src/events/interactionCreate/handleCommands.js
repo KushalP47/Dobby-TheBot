@@ -79,7 +79,7 @@ module.exports = async (client, interaction) => {
         if(interaction.channelId === process.env.REGISTRATION_CHANNEL_ID && interaction.message.author.bot){
 
             const commandObject = localCommands.find((cmd)=> cmd.name === 'roleassignment');
-            console.log(commandObject);
+            // console.log(commandObject);
             await commandObject.callback(client, interaction);
 
         }
