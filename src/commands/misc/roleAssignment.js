@@ -39,14 +39,11 @@ module.exports = {
                 username: interaction.user.username,
                 role: "member",
             }
+
             const level = await Level.findOne(query);
-            console.log(interaction.member.moderatable);
-            role.editable = true;
-            console.log(role.editable);
+            // console.log(level);
             if(level){
-                
                 await interaction.member.roles.add(role);
-                console.log(interaction.member.roles);
                 level.role = role.name; // changing the role in database
 
                 // saving the changes in database
