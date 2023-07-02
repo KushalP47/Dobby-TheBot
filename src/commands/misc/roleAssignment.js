@@ -1,14 +1,13 @@
 const { Client, Interaction } = require('discord.js');
 const Level = require('../../models/Level');
 
-/**
- * 
- * @param {Client} client 
- * @param {Interaction} interaction 
- */
-
 module.exports = {
-    name: "roleAssignment",
+    /**
+     * 
+     * @param {Client} client 
+     * @param {Interaction} interaction 
+     */
+    name: 'roleassignment',
     description: "Will assign roles to members",
     devOnly: false,
     testOnly: false,
@@ -41,7 +40,7 @@ module.exports = {
             }
             const level = await Level.findOne(query);
             if(level){
-                await member.roles.add(role);
+                await interaction.member.roles.add(role);
                 level.role = role.name; // changing the role in database
 
                 // saving the changes in database
@@ -67,5 +66,4 @@ module.exports = {
         }
         
     },
-
 };

@@ -8,9 +8,10 @@ const getLocalCommands = require('../../utils/getLocalCommands');
  */
 
 module.exports = async (client, interaction) => {
-    if(interaction.isChatInputCommand()){
 
     const localCommands = getLocalCommands();
+
+    if(interaction.isChatInputCommand()){
 
     try {
         
@@ -77,7 +78,10 @@ module.exports = async (client, interaction) => {
         // checking if the reaction is on the welcome message
         if(interaction.channelId === process.env.REGISTRATION_CHANNEL_ID && interaction.message.author.bot){
 
-            await roleAssignment.callback(client, interaction);
+            const commandObject = localCommands.find((cmd)=> cmd.name === 'roleassignment');
+            console.log(commandObject);
+            await commandObject.callback(client, interaction);
+
         }
 
         return;

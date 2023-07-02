@@ -13,6 +13,7 @@ module.exports = async (client) => {
 
         for(const localCommand of localCommands){
 
+            // console.log(localCommand);
             // will get some data from localCommands to compare it with applicationsCommand
             const { name, description, options } = localCommand;
 
