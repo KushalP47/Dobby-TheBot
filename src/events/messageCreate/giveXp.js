@@ -45,8 +45,9 @@ module.exports = async(client, message) => {
             if (level.xp > calculateLevelXp(level.level)) {
               level.xp = 0;
               level.level += 1;
-      
-              message.channel.send(`${message.member} you have leveled up to **level ${level.level}**.`);
+              const statusChannelID = process.env.STATUS_CHANNEL_ID;
+              const statusChannel = client.channels.cache.get(statusChannelID);
+              statusChannel.send(`${message.member} you have leveled up to **level ${level.level}**.`);
             }
       
             await level.save().catch((e) => {
