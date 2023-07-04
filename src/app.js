@@ -10,9 +10,6 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-app.listen(8080, '0.0.0.0', () => {
-  console.log(`Server is running on http://0.0.0.0:${port}`);
-});
 
 const client = new Client({
   intents: [
@@ -38,5 +35,9 @@ const client = new Client({
     console.log(error);
   }
 })();
+
+app.listen(8080, '0.0.0.0', () => {
+  console.log(`Server is running on http://0.0.0.0:${port}`);
+});
 
 
