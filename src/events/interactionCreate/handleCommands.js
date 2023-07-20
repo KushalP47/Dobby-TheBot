@@ -1,6 +1,7 @@
 const { Client, Interaction } = require('discord.js');
 const { devs, testServer } = require('../../../config.json');
 const getLocalCommands = require('../../utils/getLocalCommands');
+const saveErrorToDatabase = require('../../utils/saveErrorToDatabase');
 /**
  * 
  * @param {Client} client 
@@ -70,7 +71,7 @@ module.exports = async (client, interaction) => {
         
 
     } catch (error) {
-        console.log(`There was error running this command: ${error}`);
+        saveErrorToDatabase(error, client);
     }
 } else if(interaction.isButton()){
 
@@ -84,7 +85,7 @@ module.exports = async (client, interaction) => {
 
         return;
     } catch (error) {
-        console.log(error);
+        saveErrorToDatabase(error, client);
     }
     
 }

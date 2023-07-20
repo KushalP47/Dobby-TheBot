@@ -6,6 +6,7 @@ const {
   } = require('discord.js');
   const canvacord = require('canvacord');
   const calculateLevelXp = require('../../utils/calculateLevelUpXp');
+  const saveErrorToDatabase = require('../../utils/saveErrorToDatabase');
   const Level = require('../../models/Level');
 
 function getRole(targetUser) {
@@ -24,6 +25,8 @@ module.exports = {
    * @param {Interaction} interaction
    */
     callback: async(client, interaction) => {
+      try {
+
         await interaction.deferReply();
         if(interaction.channelId != process.env.STATUS_CHANNEL_ID){
             interaction.editReply("You can only run this command in the status channel");
@@ -69,6 +72,9 @@ module.exports = {
         const data = await rank.build();
         const attachment = new AttachmentBuilder(data);
         interaction.editReply({ files: [attachment] });
+      } catch (error) {
+        saveErrorToDatabase(error, client);
+      }
     },
 
     name: 'level',

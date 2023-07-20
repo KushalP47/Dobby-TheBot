@@ -1,4 +1,5 @@
 const { Client, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
+const saveErrorToDatabase = require('../../utils/saveErrorToDatabase');
 
 /**
  * 
@@ -52,7 +53,7 @@ module.exports = (client) => {
         return;
 
     } catch (error) {
-        console.log(`Error: ${error}`);
+        saveErrorToDatabase(error, client);
     }
 
 };

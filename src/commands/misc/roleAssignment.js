@@ -1,5 +1,6 @@
 const { Client, Interaction, PermissionFlagsBits } = require('discord.js');
 const Level = require('../../models/Level');
+const saveErrorToDatabase = require('../../utils/saveErrorToDatabase');
 
 module.exports = {
     /**
@@ -65,7 +66,7 @@ module.exports = {
 
             
         } catch (error) {
-            console.log(error);
+            csaveErrorToDatabase(error, client);
         }
         
     },

@@ -1,5 +1,6 @@
 const areCommandsDifferent = require("../../utils/areCommandsDifferent");
 const getLocalCommands = require("../../utils/getLocalCommands");
+const saveErrorToDatabase = require("../../utils/saveErrorToDatabase");
 const getApplicationCommands = require("../../utils/getApplicationCommands");
 const { testServer } = require("../../../config.json");
 
@@ -58,6 +59,6 @@ module.exports = async (client) => {
         }
         
      catch (error) {
-        console.log(`There was an error running registerCommands.js ${error}`);
+        saveErrorToDatabase(error, client);
     }
 };

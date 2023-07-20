@@ -1,5 +1,6 @@
 const { Client, Message } = require('discord.js');
 const calculateLevelXp = require('../../utils/calculateLevelUpXp');
+const saveErrorToDatabase = require('../../utils/saveErrorToDatabase');
 const Level = require('../../models/Level');
 const cooldowns = new Set();
 // const roleDistribution = require('../../utils/roleDistribution');
@@ -63,7 +64,7 @@ module.exports = async(client, message) => {
             message.channel.send(`${message.author} you haven't registered in the db`);
         }
     } catch (error) {
-        console.log(`there was an error in giveXp.js: ${error}`);
+      saveErrorToDatabase(error, client);
     }
 
 };

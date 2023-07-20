@@ -1,4 +1,5 @@
 const User = require('../../models/User')
+const saveErrorToDatabase = require('../../utils/saveErrorToDatabase')
 const { Client, Interaction, ApplicationCommandOptionType } = require('discord.js');
 
 
@@ -74,7 +75,7 @@ module.exports = {
             return;
             
         } catch (error) {
-            console.log(`Error in /progress command: ${error}`);
+            saveErrorToDatabase(error, client);
         }
     }
 }

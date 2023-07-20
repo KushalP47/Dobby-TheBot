@@ -1,5 +1,6 @@
 const { Client, GuildMember, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const Level = require('../../models/Level');
+const saveErrorToDatabase = require('../../utils/saveErrorToDatabase');
 /**
  * 
  * @param {Client} client 
@@ -23,6 +24,6 @@ module.exports = async (client, member) => {
         return;
         
     } catch (error) {
-        console.log(`Error generated while configuring the role: ${error}`);
+        saveErrorToDatabase(error, client);
     }
 };
