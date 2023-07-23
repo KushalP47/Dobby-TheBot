@@ -64,7 +64,7 @@ module.exports = async(client, message) => {
             message.channel.send(`${message.author} you haven't registered in the db`);
         }
     } catch (error) {
-      saveErrorToDatabase(error, client);
+      saveErrorToDatabase(error);
     }
 
 };

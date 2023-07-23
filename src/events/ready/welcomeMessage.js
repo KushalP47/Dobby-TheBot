@@ -53,7 +53,7 @@ module.exports = (client) => {
         return;
 
     } catch (error) {
-        saveErrorToDatabase(error, client);
+        saveErrorToDatabase(error);
     }
 
 };

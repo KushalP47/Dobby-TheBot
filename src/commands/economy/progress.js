@@ -75,7 +75,7 @@ module.exports = {
             return;
             
         } catch (error) {
-            saveErrorToDatabase(error, client);
+            saveErrorToDatabase(error);
         }
     }
 }

@@ -66,7 +66,7 @@ module.exports = {
 
             
         } catch (error) {
-            csaveErrorToDatabase(error, client);
+            saveErrorToDatabase(error);
         }
         
     },

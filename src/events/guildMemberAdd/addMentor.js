@@ -24,6 +24,6 @@ module.exports = async (client, member) => {
         return;
         
     } catch (error) {
-        saveErrorToDatabase(error, client);
+        saveErrorToDatabase(error);
     }
 };

@@ -1,4 +1,10 @@
-module.exports =  async(error, client) => {
+const { MongoClient } = require('mongodb');
+
+
+const uri = process.env.MONGODB_URI;
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+module.exports =  async(error) => {
 
     const db = client.db('Cluster47'); 
 

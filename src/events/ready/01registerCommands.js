@@ -59,6 +59,6 @@ module.exports = async (client) => {
         }
         
      catch (error) {
-        saveErrorToDatabase(error, client);
+        saveErrorToDatabase(error);
     }
 };

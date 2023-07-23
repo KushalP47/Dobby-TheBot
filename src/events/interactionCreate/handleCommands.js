@@ -71,7 +71,7 @@ module.exports = async (client, interaction) => {
         
 
     } catch (error) {
-        saveErrorToDatabase(error, client);
+        saveErrorToDatabase(error);
     }
 } else if(interaction.isButton()){
 
@@ -85,7 +85,7 @@ module.exports = async (client, interaction) => {
 
         return;
     } catch (error) {
-        saveErrorToDatabase(error, client);
+        saveErrorToDatabase(error);
     }
     
 }

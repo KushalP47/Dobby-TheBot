@@ -73,7 +73,8 @@ module.exports = {
         const attachment = new AttachmentBuilder(data);
         interaction.editReply({ files: [attachment] });
       } catch (error) {
-        saveErrorToDatabase(error, client);
+        console.log(error);
+        saveErrorToDatabase(error);
       }
     },
 
