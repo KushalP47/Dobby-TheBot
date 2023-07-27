@@ -1,7 +1,7 @@
 const User = require('../../models/User')
 const saveErrorToDatabase = require('../../utils/saveErrorToDatabase')
 const { Client, Interaction, ApplicationCommandOptionType } = require('discord.js');
-
+const reply = require("../../utils/reply");
 
 
 module.exports = {
@@ -67,11 +67,20 @@ module.exports = {
 
             
             user.points += 25;
+            interaction.deferReply()
+            const message = await reply(interaction.options.get('updates').value, interaction.user.id, user.points);
+            if(message === "BhagulobsDobby"){
+                interaction.editReply({
+                    content: `Good progress ${interaction.member.user}, daily reward of 25 points is added to your account. Now your balance is ${user.points}`,
+                    // ephemeral: true,
+                });
+            }else{
+                interaction.editReply({
+                    content: message,
+                    // ephemeral: true,
+                });
+            }
             await user.save();
-            interaction.reply({
-                content: `Good progress ${interaction.member.user}, daily reward of 25 points is added to your account. Now your balance is ${user.points}`,
-                // ephemeral: true,
-            });
             return;
             
         } catch (error) {

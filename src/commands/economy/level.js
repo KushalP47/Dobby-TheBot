@@ -32,16 +32,23 @@ module.exports = {
             interaction.editReply("You can only run this command in the status channel");
             return;
         }
-     
-        const targetUser = interaction.member;
-        const targetUserObj = await interaction.guild.members.fetch(targetUser.user.id);
-
+        
+        let targetUser = interaction.member;
+        console.log(interaction.member);
+        
+        let targetUserObj = await interaction.guild.members.fetch(targetUser.user.id);
+        if(interaction.options.get('target-user')){
+          targetUser = interaction.options.get('target-user').user;
+          targetUserObj = await interaction.guild.members.fetch(targetUser.id);
+        }
+        
+        console.log(targetUserObj);
         const fetchedLevel = await Level.findOne({
-            username: targetUser.user.username,
-            role: getRole(targetUser),
+            username: targetUserObj.user.username,
+            role: getRole(targetUserObj),
         });
 
-        // console.log(fetchedLevel.username, fetchedLevel.role);
+        
 
 
         let allLevels = await Level.find().select(
@@ -80,9 +87,14 @@ module.exports = {
 
     name: 'level',
     description: "Shows XP your level.",
+    options: [{
+      name: 'target-user',
+      description: "user who's level you want to see",
+      type: ApplicationCommandOptionType.User,
+      required: false,
+  }],
     devOnly: false,
     testOnly: false,
-    // options: [{}],
     deleted: false,
 
 };
